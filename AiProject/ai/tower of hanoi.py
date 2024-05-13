@@ -1,5 +1,5 @@
-import pygame
-import sys
+import pygame 
+import sys 
 from collections import deque
 import heapq
 
@@ -34,7 +34,7 @@ class Button:
 class TowerOfHanoiGame:
     def __init__(self):
         self.min_disks = 3
-        self.max_disks = 8
+        
         self.num_disks = self.min_disks
         self.towers = [[i for i in range(self.num_disks, 0, -1)], [], []]
         self.selected_disk = None
@@ -81,11 +81,7 @@ class TowerOfHanoiGame:
                    self.solve_with_a_star),
             Button(670, self.height - 100, 120, 40, (255, 255, 0), (128, 128, 128), "Best-First", (0, 0, 0),
                    self.solve_with_best_first),
-            Button(200, self.height - 50, 80, 40, (255, 255, 0), (128, 128, 128), "-", (0, 0, 0),
-                   self.decrease_disks),
-            Button(300, self.height - 50, 80, 40, (255, 255, 0), (128, 128, 128), "+", (0,0, 0),
-                   self.increase_disks),
-            Button(550, self.height - 50, 100, 40, (255, 255, 0), (128, 128, 128), "Restart", (0, 0, 0),
+            Button(350, self.height - 50, 120, 40, (255, 255, 0), (128, 128, 128), "Restart", (0, 0, 0),
                    self.restart_game)
         ]
 
@@ -142,17 +138,6 @@ class TowerOfHanoiGame:
     def draw_buttons(self):
         for button in self.buttons:
             button.draw(self.screen, self.font)
-
-    def increase_disks(self):
-        if self.num_disks < self.max_disks:
-            self.num_disks += 1
-            self.reset_game()
-
-    def decrease_disks(self):
-        if self.num_disks > self.min_disks:
-            self.num_disks -= 1
-            self.reset_game()
-
     def on_click(self, tower):
         if self.selected_disk is None:
             if self.towers[tower]:
